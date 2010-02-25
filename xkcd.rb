@@ -10,7 +10,8 @@ image_map = {
 }
 
 get '/' do
-  haml :index, :locals => { :source => image_map[:index] }
+  haml :index, :locals => { :source => image_map[:index],
+    :title_text => TextGrabber.grab(:index) }
 end
 
 get '/:id' do
