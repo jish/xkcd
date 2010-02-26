@@ -2,19 +2,16 @@ require 'rubygems'
 require 'sinatra'
 require 'haml'
 
+require 'lib/image_grabber'
 require 'lib/text_grabber'
 
-image_map = {
-  :index => 'http://imgs.xkcd.com/comics/freedom.png',
-  '705'  => 'http://imgs.xkcd.com/comics/devotion_to_duty.png'
-}
-
+# TODO change this hard-coded id to use the KeyGrabber
 get '/' do
-  haml :index, :locals => { :source => image_map[:index],
+  haml :index, :locals => { :source => ImageGrabber.grab(706),
     :title_text => TextGrabber.grab(:index) }
 end
 
 get '/:id' do
-  haml :index, :locals => { :source => image_map[params[:id]],
+  haml :index, :locals => { :source => ImageGrabber.grab(params[:id]),
     :title_text => TextGrabber.grab(params[:id]) }
 end
