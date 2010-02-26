@@ -1,11 +1,21 @@
+require 'rubygems'
+require 'mechanize'
+
 class TextGrabber
 
-  TEXT_MAP = {
-    '705' => "The weird sense of duty really good sysadmins have can border on the sociopathic, but it's nice to know that it stands between the forces of darkness and your cat blog's servers."
-  }
+  # TODO - We're already grabbing the image once with mechanize (for the src).
+  # We should have a way to use that object again. We don't need to make two
+  # HTTP requests to get two different attributes of the same element.
+  #
+  #   img['src']
+  #   img['title']
+  #
+  def self.grab(key)
+    agent = Mechanize.new
+    page  = agent.get("http://xckd.com/#{key}")
+    img   = page.at('#middleContent img')
 
-  def self.grab(id)
-    TEXT_MAP[id.to_s]
+    img['title']
   end
 
 end
