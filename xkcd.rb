@@ -7,9 +7,10 @@ require 'lib/key_grabber'
 require 'lib/text_grabber'
 
 get '/' do
-  haml :index, :locals => { :source =>
-    ImageGrabber.grab(KeyGrabber.current_key),
-    :title_text => TextGrabber.grab(:index) }
+  key = KeyGrabber.current_key
+
+  haml :index, :locals => { :source => ImageGrabber.grab(key),
+    :title_text => TextGrabber.grab(key) }
 end
 
 get '/:id' do
