@@ -1,24 +1,15 @@
 require 'rubygems'
 require 'mechanize'
 
+require 'page_grabber'
+
 class ImageGrabber
 
-  IMAGE_MAP = {}
-
   def self.grab(key)
-    key = key.to_s
+    page = PageGrabber.grab(key)
+    img  = page.at('#middleContent img')
 
-    get_image_location(key) unless IMAGE_MAP[key]
-
-    IMAGE_MAP[key]
-  end
-
-  def self.get_image_location(key)
-    agent = Mechanize.new
-    page  = agent.get("http://xkcd.com/#{key}")
-    img   = page.at('#middleContent img')
-
-    IMAGE_MAP[key] = img['src']
+    img['src']
   end
 
 end
