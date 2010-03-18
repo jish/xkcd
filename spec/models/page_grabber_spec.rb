@@ -1,5 +1,20 @@
 require 'page_grabber'
 
+class CountingPageGrabber < PageGrabber
+
+  class << self
+    attr_accessor :agent_queries
+  end
+
+  def self.agent
+    @agent_queries += 1
+    super
+  end
+
+end
+
+
+
 describe PageGrabber do
 
   it 'should grab a page' do
@@ -8,10 +23,10 @@ describe PageGrabber do
   end
 
   it 'should not make two requests for the same page' do
-    PageGrabber.agent_queries = 0
-    page = PageGrabber.grab(707)
-    page = PageGrabber.grab(707)
-    PageGrabber.agent_queries.should == 1
+    CountingPageGrabber.agent_queries = 0
+    page = CountingPageGrabber.grab(707)
+    page = CountingPageGrabber.grab(707)
+    CountingPageGrabber.agent_queries.should == 1
   end
 
 end
