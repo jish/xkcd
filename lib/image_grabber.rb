@@ -1,7 +1,7 @@
 require 'rubygems'
 require 'mechanize'
 
-require 'page_grabber'
+require 'lib/page_grabber'
 
 class ImageGrabber
 
