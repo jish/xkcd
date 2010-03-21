@@ -16,8 +16,7 @@ get '/' do
     :title_text => TextGrabber.grab(key), :title => TitleGrabber.grab(key) }
 end
 
-get '/:id' do
-  haml :index, :locals => { :source => ImageGrabber.grab(params[:id]),
-    :title_text => TextGrabber.grab(params[:id]),
-    :title => TitleGrabber.grab(key) }
+get %r{/([\d]+)} do |id|
+  haml :index, :locals => { :source => ImageGrabber.grab(id),
+    :title_text => TextGrabber.grab(id), :title => TitleGrabber.grab(id) }
 end
