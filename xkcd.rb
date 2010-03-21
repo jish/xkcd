@@ -6,6 +6,8 @@ require 'lib/image_grabber'
 require 'lib/key_grabber'
 require 'lib/text_grabber'
 
+set :haml, {:format => :html5 }
+
 get '/' do
   key = KeyGrabber.current_key
 
