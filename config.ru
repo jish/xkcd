@@ -1,3 +1,3 @@
 require 'xkcd'
 
-run Sinatra::Application
+run Xkcd
