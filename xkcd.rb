@@ -23,4 +23,8 @@ class Xkcd < Sinatra::Base
       :title_text => TextGrabber.grab(id), :title => TitleGrabber.grab(id) }
   end
 
+  get '/ping' do
+    'pong'
+  end
+
 end
