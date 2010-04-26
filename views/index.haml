@@ -7,7 +7,8 @@
     %h1= title
 
     #menu
-      %a{ :href => "/#{@page.id - 1}" } Previous
+      -if @page.id > 1
+        %a{ :href => "/#{@page.id - 1}" } Previous
 
       - if @page.id < KeyGrabber.current_key.to_i
         %a{ :href => "/#{@page.id + 1}" } Next
