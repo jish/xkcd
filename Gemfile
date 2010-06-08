@@ -1,4 +1,4 @@
 source :gemcutter
-gem 'sinatra', '0.9.4'
+gem 'sinatra', '1.0'
 gem 'mechanize', '1.0.0'
 gem 'haml', '2.2.20'
