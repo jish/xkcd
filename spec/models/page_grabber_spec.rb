@@ -1,4 +1,5 @@
 require 'page_grabber'
+require 'mock/mechanize'
 
 class CountingPageGrabber < PageGrabber
 

@@ -1,5 +1,7 @@
 require 'page'
 
+puts ENV.inspect
+
 describe Page do
 
   describe '#id' do
