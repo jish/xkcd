@@ -11,6 +11,7 @@ require 'page'
 class Xkcd < Sinatra::Base
 
   set :haml, {:format => :html5 }
+  set :public, 'public'
 
   get '/' do
     key = KeyGrabber.current_key
