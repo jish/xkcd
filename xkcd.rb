@@ -11,7 +11,6 @@ require 'page'
 class Xkcd < Sinatra::Base
 
   set :haml, {:format => :html5 }
-  set :public, 'public'
 
   get '/' do
     key = KeyGrabber.current_key
@@ -31,11 +30,5 @@ class Xkcd < Sinatra::Base
   get '/ping' do
     'pong'
   end
-
-  get '/envdump' do
-    ENV.map { |key, value| ["<strong>#{key}</strong>", value] * ': ' } * '<br />'
-  end
-
-  puts public
 
 end
