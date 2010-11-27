@@ -7,6 +7,7 @@ describe KeyGrabber do
     it 'should grab the current key' do
       key = KeyGrabber.current_key
       key.should be_a_kind_of String
+      key.should =~ /\d+/
     end
 
     it 'should cache the result' do

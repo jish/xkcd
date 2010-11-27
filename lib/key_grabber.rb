@@ -1,4 +1,3 @@
-require 'rubygems'
 require 'mechanize'
 
 class KeyGrabber
@@ -10,7 +9,7 @@ class KeyGrabber
       @last_read = Time.now
       agent = Mechanize.new
       page  = agent.get("http://xkcd.com")
-      @current_key = page.at("h3:nth-child(11)").text.delete('^0-9')
+      @current_key = page.at("h3:nth-child(14)").text.delete('^0-9')
     end
   end
 
