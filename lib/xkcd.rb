@@ -1,11 +1,10 @@
-require 'rubygems'
 require 'sinatra/base'
 require 'haml'
 
-require 'lib/image_grabber'
-require 'lib/key_grabber'
-require 'lib/text_grabber'
-require 'lib/title_grabber'
+require 'image_grabber'
+require 'key_grabber'
+require 'text_grabber'
+require 'title_grabber'
 require 'page'
 
 class Xkcd < Sinatra::Base
