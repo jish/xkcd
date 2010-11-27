@@ -1,4 +1,4 @@
-require 'lib/page_grabber'
+require 'page_grabber'
 
 class TitleGrabber
 

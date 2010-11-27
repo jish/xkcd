@@ -1,7 +1,4 @@
-require 'rubygems'
-require 'mechanize'
-
-require 'lib/page_grabber'
+require 'page_grabber'
 
 class TextGrabber
 
