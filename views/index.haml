@@ -4,6 +4,7 @@
     %title You're welcome, you can read the title text
     %meta{ :name => 'viewport', :content => 'width=320; initial-scale=1.0;' }
     %link{ :rel => 'shortcut icon', :href => '/favicon.ico' }
+    %link{ :rel => 'stylesheet', :href => '/css/xkcd.css' }
 
   %body
     %h1= title
@@ -16,6 +17,6 @@
         %a{ :href => "/#{@page.id + 1}" } Next
 
     #content
-      %img{ :src => source }
+      %img{ :src => source, :width => 300 }
 
       %p= title_text
