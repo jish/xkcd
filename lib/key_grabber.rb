@@ -1,4 +1,4 @@
-require 'mechanize'
+require 'net/http'
 
 class KeyGrabber
 
@@ -7,9 +7,10 @@ class KeyGrabber
       @current_key
     else
       @last_read = Time.now
-      agent = Mechanize.new
-      page  = agent.get("http://xkcd.com")
-      @current_key = page.at("h3:nth-child(14)").text.delete('^0-9')
+
+      response = Net::HTTP.start('xkcd.com', 80) { |http| http.get('/') }
+      pattern  = /Permanent link to this comic: http:\/\/xkcd.com\/(\d+)\//
+      response.body.match(pattern)[1]
     end
   end
 
