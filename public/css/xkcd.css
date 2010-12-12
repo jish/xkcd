@@ -7,7 +7,6 @@ body {
 }
 
 h1 {
-  color: #779;
   font-size: 1.4em;
   margin: 0;
   padding: 0;
@@ -28,6 +27,12 @@ h2 {
 
 .section h1 {
   margin: 5px 0;
+}
+
+.section h1 a {
+  color: #779;
+  display: block;
+  text-decoration: none;
 }
 
 .section h2 {
