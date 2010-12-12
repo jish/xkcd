@@ -7,18 +7,15 @@
     %link{ :rel => 'stylesheet', :href => '/css/xkcd.css' }
 
   %body
-    .section
+    %section
       %h1
         %a{ :href => '/' } xkcd mobile
 
-    .section
+    %section
       %h2= title
 
       =haml :nav
+      %img{ :src => source, :width => 300 }
+      =haml :nav
 
-      #content
-        %img{ :src => source, :width => 300 }
-
-        =haml :nav
-
-        %p= title_text
+      %p= title_text

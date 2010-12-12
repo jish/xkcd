@@ -18,40 +18,40 @@ h2 {
   padding: 0;
 }
 
-.section {
+section {
   background: #fff;
   border: 1px solid #000;
   margin: 5px 0;
   border-radius: 5px;
 }
 
-.section h1 {
+section h1 {
   margin: 5px 0;
 }
 
-.section h1 a {
+section h1 a {
   color: #779;
   display: block;
   text-decoration: none;
 }
 
-.section h2 {
+section h2 {
   margin: 5px 0;
 }
 
-#content p {
-  margin: 0 5px 5px;
-}
-
-.section .nav {
+section nav {
   margin: 10px 0;
 }
 
-.section .nav a {
+section nav a {
   color: #fff;
   background: #779;
   border: 1px solid #000;
   font-size: 0.8em;
   padding: 1px 5px;
   text-decoration: none;
+}
+
+section p {
+  margin: 0 5px 5px;
 }
