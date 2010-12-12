@@ -7,16 +7,17 @@
     %link{ :rel => 'stylesheet', :href => '/css/xkcd.css' }
 
   %body
-    %h1= title
+    .section
+      %h1 xkcd mobile
 
-    #menu
-      -if @page.id > 1
-        %a{ :href => "/#{@page.id - 1}" } Previous
+    .section
+      %h2= title
 
-      - if @page.id < KeyGrabber.current_key.to_i
-        %a{ :href => "/#{@page.id + 1}" } Next
+      =haml :nav
 
-    #content
-      %img{ :src => source, :width => 300 }
+      #content
+        %img{ :src => source, :width => 300 }
 
-      %p= title_text
+        =haml :nav
+
+        %p= title_text
