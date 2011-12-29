@@ -53,5 +53,6 @@ section nav a {
 }
 
 section p {
-  margin: 0 5px 5px;
+  margin: 0 auto 5px;
+  width: 300px;
 }
