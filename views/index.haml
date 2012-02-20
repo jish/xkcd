@@ -5,6 +5,7 @@
     %meta{ :name => 'viewport', :content => 'width=320; initial-scale=1.0;' }
     %link{ :rel => 'shortcut icon', :href => '/favicon.ico' }
     %link{ :rel => 'stylesheet', :href => '/css/xkcd.css' }
+    %link{ :rel => 'stylesheet', :href => '/css/device.css' }
 
   %body
     %section
@@ -15,7 +16,7 @@
       %h2= title
 
       =haml :nav
-      %img{ :src => source, :width => 300 }
+      %img{ :src => source, :class => "comic" }
       =haml :nav
 
       %p= title_text

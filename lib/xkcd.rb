@@ -27,6 +27,14 @@ class Xkcd < Sinatra::Base
       :title_text => TextGrabber.grab(id), :title => TitleGrabber.grab(id) }
   end
 
+  get '/css/device.css', :agent => /iphone/i do
+    send_file 'public/css/iphone.css'
+  end
+
+  get '/css/device.css' do
+    send_file 'public/css/blank.css'
+  end
+
   get '/ping' do
     'pong'
   end
