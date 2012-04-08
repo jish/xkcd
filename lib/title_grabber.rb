@@ -4,6 +4,7 @@ class TitleGrabber
 
   def self.grab(key)
     page = PageGrabber.grab(key)
+    extract_title(page)
   end
 
   def self.extract_title(page)
