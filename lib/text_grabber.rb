@@ -1,5 +1,6 @@
 require 'page_grabber'
 require 'image_grabber'
+require 'nokogiri'
 
 class TextGrabber
 

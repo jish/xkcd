@@ -1,4 +1,3 @@
-require 'mechanize'
 require 'page_grabber'
 
 class ImageGrabber
@@ -11,7 +10,7 @@ class ImageGrabber
   end
 
   def self.extract_image(page)
-    page.at('#middleContent img') || page.at('#comic img')
+    (page.css('#middleContent img') + page.css('#comic img')).first
   end
 
 end

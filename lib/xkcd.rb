@@ -11,6 +11,7 @@ class Xkcd < Sinatra::Base
 
   set :haml, {:format => :html5 }
   set :public, 'public'
+  set :views, 'views'
 
   get '/' do
     key = KeyGrabber.current_key
