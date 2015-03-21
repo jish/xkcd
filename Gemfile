@@ -7,6 +7,7 @@ gem 'haml', '2.2.20'
 gem 'tiny_http'
 gem 'puma'
 gem 'nokogiri'
+gem 'rack-ssl-enforcer'
 
 group :test do
   gem 'rspec'
