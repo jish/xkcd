@@ -6,6 +6,7 @@ gem 'sinatra', '1.0'
 gem 'haml', '2.2.20'
 gem 'tiny_http'
 gem 'puma'
+gem 'nokogiri'
 
 group :test do
   gem 'rspec'
