@@ -21,8 +21,9 @@ h2 {
 section {
   background: #fff;
   border: 1px solid #000;
-  margin: 5px 0;
   border-radius: 5px;
+  margin: 5px 0;
+  padding: 0 8px;
 }
 
 section h1 {
@@ -54,5 +55,9 @@ section nav a {
 
 section p {
   margin: 0 auto 5px;
-  width: 300px;
+  max-width: 500px;
+}
+
+img.comic {
+  max-width: 100%;
 }
