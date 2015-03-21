@@ -6,7 +6,7 @@ class ImageGrabber
     page = PageGrabber.grab(key)
     img = extract_image(page)
 
-    img['src'].sub(/^https?:/, "")
+    img['src'].sub(%r{^http://imgs.xkcd.com}, "https://sslimgs.xkcd.com")
   end
 
   def self.extract_image(page)

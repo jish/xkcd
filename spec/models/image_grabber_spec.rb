@@ -16,7 +16,7 @@ describe ImageGrabber do
 
       key = 1034
       image_source = ImageGrabber.grab(key)
-      image_source.should == '//imgs.xkcd.com/comics/share_buttons.png'
+      image_source.should == 'https://sslimgs.xkcd.com/comics/share_buttons.png'
     end
   end
 
