@@ -7,12 +7,16 @@ GEM
       temple (>= 0.8.0)
       tilt
     mini_portile2 (2.4.0)
+    mustermann (1.1.1)
+      ruby2_keywords (~> 0.0.1)
     nio4r (2.5.2)
     nokogiri (1.10.9)
       mini_portile2 (~> 2.4.0)
     puma (4.3.5)
       nio4r (~> 2.0)
-    rack (1.6.12)
+    rack (2.2.2)
+    rack-protection (2.0.8.1)
+      rack
     rack-ssl-enforcer (0.2.9)
     rspec (3.9.0)
       rspec-core (~> 3.9.0)
@@ -27,8 +31,12 @@ GEM
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.9.0)
     rspec-support (3.9.3)
-    sinatra (1.0)
-      rack (>= 1.0)
+    ruby2_keywords (0.0.2)
+    sinatra (2.0.8.1)
+      mustermann (~> 1.0)
+      rack (~> 2.0)
+      rack-protection (= 2.0.8.1)
+      tilt (~> 2.0)
     temple (0.8.2)
     tilt (2.0.10)
     tiny_http (0.1.2)
@@ -41,10 +49,10 @@ DEPENDENCIES
   haml
   nokogiri
   puma
-  rack (= 1.6.12)
+  rack
   rack-ssl-enforcer
   rspec
-  sinatra (= 1.0)
+  sinatra
   tiny_http
 
 RUBY VERSION
