@@ -1,9 +1,9 @@
 source 'https://rubygems.org'
-ruby '2.1.5'
+ruby '2.7.1'
 
 gem 'rack', '1.3.3'
 gem 'sinatra', '1.0'
-gem 'haml', '2.2.20'
+gem 'haml'
 gem 'tiny_http'
 gem 'puma'
 gem 'nokogiri'
