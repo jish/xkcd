@@ -1,3 +1,4 @@
+require 'webmock/rspec'
 
 def file(filename)
   test_file_path = File.expand_path('../fixtures/files', __FILE__)

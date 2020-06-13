@@ -7,10 +7,9 @@ class KeyGrabber
       @current_key
     else
       @last_read = Time.now
+      body = fetch_homepage
 
-      response = Net::HTTP.start('xkcd.com', 80) { |http| http.get('/') }
-      pattern  = /Permanent link to this comic: http:\/\/xkcd.com\/(\d+)\//
-      response.body.match(pattern)[1]
+      extract_key(body)
     end
   end
 
@@ -19,6 +18,16 @@ class KeyGrabber
     expiration   = Time.now - five_minutes
 
     @last_read.to_i > expiration.to_i
+  end
+
+  def self.fetch_homepage
+    uri = URI.parse("https://xkcd.com/")
+    Net::HTTP.get(uri)
+  end
+
+  def self.extract_key(body)
+    pattern = /Permanent link to this comic: https:\/\/xkcd.com\/(\d+)\//
+    body.match(pattern)[1]
   end
 
 end
