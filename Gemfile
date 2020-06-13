@@ -11,5 +11,5 @@ gem 'rack-ssl-enforcer'
 
 group :test do
   gem 'rspec'
-  gem 'fakeweb'
+  gem 'webmock'
 end
