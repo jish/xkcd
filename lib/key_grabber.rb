@@ -2,6 +2,8 @@ require 'net/http'
 
 class KeyGrabber
 
+  CACHE_TTL = 2 * 60 * 60
+
   def self.current_key
     if fresh? && @current_key
       return @current_key
@@ -13,10 +15,15 @@ class KeyGrabber
   end
 
   def self.fresh?
-    five_minutes = 60 * 5
-    expiration   = Time.now - five_minutes
+    Time.now < expire_at
+  end
 
-    @last_read.to_i > expiration.to_i
+  def self.expire_at
+    last_read + CACHE_TTL
+  end
+
+  def self.last_read
+    @last_read || Time.at(0)
   end
 
   def self.fetch_homepage(timestamp)
