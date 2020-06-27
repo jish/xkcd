@@ -4,13 +4,12 @@ class KeyGrabber
 
   def self.current_key
     if fresh? && @current_key
-      @current_key
-    else
-      @last_read = Time.now
-      body = fetch_homepage
-
-      extract_key(body)
+      return @current_key
     end
+
+    body = fetch_homepage(Time.now)
+
+    @current_key = extract_key(body)
   end
 
   def self.fresh?
@@ -20,14 +19,22 @@ class KeyGrabber
     @last_read.to_i > expiration.to_i
   end
 
-  def self.fetch_homepage
+  def self.fetch_homepage(timestamp)
     uri = URI.parse("https://xkcd.com/")
-    Net::HTTP.get(uri)
+    response = Net::HTTP.get(uri)
+    @last_read = timestamp
+
+    response
   end
 
   def self.extract_key(body)
     pattern = /Permanent link to this comic: https:\/\/xkcd.com\/(\d+)\//
     body.match(pattern)[1]
+  end
+
+  def self.reset!
+    @current_key = nil
+    @last_read = nil
   end
 
 end

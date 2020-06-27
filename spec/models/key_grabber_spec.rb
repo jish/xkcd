@@ -4,6 +4,10 @@ require 'key_grabber'
 describe KeyGrabber do
 
   describe '.current_key' do
+    before do
+      KeyGrabber.reset!
+    end
+
     it 'should grab the current key' do
       stub_request(:get, 'https://xkcd.com/').
         to_return(body: file('2020.06.12_xkcd_homepage.html'))
@@ -12,6 +16,27 @@ describe KeyGrabber do
 
       expect(key).to be_kind_of(String)
       expect(key).to eq('2319')
+    end
+
+    it 'should cache the results once it finds the current key' do
+      stub_request(:get, 'https://xkcd.com/').
+        to_return(body: file('2020.06.12_xkcd_homepage.html'))
+
+      KeyGrabber.current_key
+      KeyGrabber.current_key
+
+      expect(a_request(:get, 'https://xkcd.com/')).to have_been_made.times(1)
+    end
+
+    it 'should refresh the cache when the cache is stale' do
+      stub_request(:get, 'https://xkcd.com/').
+        to_return(body: file('2020.06.12_xkcd_homepage.html'))
+      yesterday = Time.now - (24 * 60 * 60)
+
+      KeyGrabber.fetch_homepage(yesterday)
+      KeyGrabber.current_key
+
+      expect(a_request(:get, 'https://xkcd.com/')).to have_been_made.times(2)
     end
   end
 
@@ -26,18 +51,6 @@ describe KeyGrabber do
     key = KeyGrabber.extract_key(body)
 
     expect(key).to eq('1234')
-  end
-
-  describe '.fresh' do
-    it 'should be fresh within the last five minutes' do
-      KeyGrabber.instance_variable_set("@last_read", Time.now - 1)
-      expect(KeyGrabber.fresh?).to be_truthy
-    end
-
-    it 'should not be fresh if it is more than five minutes old' do
-      KeyGrabber.instance_variable_set("@last_read", Time.now - 1000)
-      expect(KeyGrabber.fresh?).to be_falsey
-    end
   end
 
 end
