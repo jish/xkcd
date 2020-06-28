@@ -15,15 +15,10 @@ class KeyGrabber
   end
 
   def self.fresh?
+    last_read = @last_read || Time.at(0)
+    expire_at = last_read + CACHE_TTL
+
     Time.now < expire_at
-  end
-
-  def self.expire_at
-    last_read + CACHE_TTL
-  end
-
-  def self.last_read
-    @last_read || Time.at(0)
   end
 
   def self.fetch_homepage(timestamp)
