@@ -41,16 +41,33 @@ section h2 {
 }
 
 section nav {
-  margin: 10px 0;
+  margin: 1em 0;
 }
 
-section nav a {
+section nav ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+section nav ul li {
+  display: inline-block;
+  width: 8em;
+  margin: 0 0.5em;
+}
+
+section nav ul a {
   color: #fff;
   background: #779;
-  border: 1px solid #000;
-  font-size: 0.8em;
-  padding: 1px 5px;
+  border: 2px solid #333;
+  border-radius: 2px;
+  display: inline-block;
+  line-height: 2em;
   text-decoration: none;
+  width: 100%;
+}
+
+section nav a:hover {
+  background: #99a;
 }
 
 section p {

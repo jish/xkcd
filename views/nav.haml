@@ -1,7 +1,9 @@
-
 %nav
-  -if @page.id > 1
-    %a{ :href => "/#{@page.id - 1}" } &lt; Previous
+  %ul
+    %li
+      -if @page.id > 1
+        %a{ :href => "/#{@page.id - 1}" } &lt; Previous
 
-  - if @page.id < KeyGrabber.current_key.to_i
-    %a{ :href => "/#{@page.id + 1}" } Next &gt;
+    %li
+      - if @page.id < KeyGrabber.current_key.to_i
+        %a{ :href => "/#{@page.id + 1}" } Next &gt;
