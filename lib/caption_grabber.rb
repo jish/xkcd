@@ -2,7 +2,7 @@ require 'page_grabber'
 require 'image_grabber'
 require 'nokogiri'
 
-class TextGrabber
+class CaptionGrabber
 
   def self.grab(key)
     page = PageGrabber.grab(key)

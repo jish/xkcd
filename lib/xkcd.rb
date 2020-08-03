@@ -3,7 +3,7 @@ require 'haml'
 
 require 'image_grabber'
 require 'key_grabber'
-require 'text_grabber'
+require 'caption_grabber'
 require 'title_grabber'
 require 'page'
 
@@ -18,14 +18,14 @@ class Xkcd < Sinatra::Base
     @page = Page.new(key)
 
     haml :index, :locals => { :source => ImageGrabber.grab(key),
-      :title_text => TextGrabber.grab(key), :title => TitleGrabber.grab(key) }
+      :caption => CaptionGrabber.grab(key), :title => TitleGrabber.grab(key) }
   end
 
   get %r{/([\d]+)} do |id|
     @page = Page.new(id)
 
     haml :index, :locals => { :source => ImageGrabber.grab(id),
-      :title_text => TextGrabber.grab(id), :title => TitleGrabber.grab(id) }
+      :caption => CaptionGrabber.grab(id), :title => TitleGrabber.grab(id) }
   end
 
   get '/ping' do
