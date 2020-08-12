@@ -4,7 +4,7 @@
 
 Run all tests
 
-    $ rspec
+    $ rake test
 
 Run a single test
 
