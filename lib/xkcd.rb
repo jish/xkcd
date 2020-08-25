@@ -7,6 +7,9 @@ require 'caption_grabber'
 require 'title_grabber'
 require 'page'
 
+##
+# Holds the main Sinatra application
+#
 class Xkcd < Sinatra::Base
 
   set :haml, {:format => :html5 }

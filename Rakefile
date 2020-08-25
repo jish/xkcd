@@ -1,7 +1,15 @@
+require 'rake/clean'
 
 task :default do
-  system("rake", "-T")
+  system("rake", "--tasks")
 end
+
+desc "Generate RDoc documentation"
+task :rdoc do
+  sh("rdoc", "--main", "docs/index.md", "docs", "lib")
+end
+
+CLOBBER.include("doc")
 
 begin
   require 'rspec/core/rake_task'
@@ -13,4 +21,3 @@ begin
   task :test => :spec
 rescue LoadError
 end
-
