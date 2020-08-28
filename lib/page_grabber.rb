@@ -3,10 +3,8 @@ require 'nokogiri'
 
 class PageGrabber
 
-  PAGES = {}
-
   def self.grab(key)
-    PAGES[key] ||= Nokogiri::XML.parse(fetch_page(key))
+    cache(key) { Nokogiri::XML.parse(fetch_page(key)) }
   end
 
   def self.fetch_page(key)
@@ -21,6 +19,15 @@ class PageGrabber
 
   def self.agent
     TinyHttp.new
+  end
+
+  def self.cache(key, &block)
+    @page_cache ||= {}
+    @page_cache[key] ||= block.call
+  end
+
+  def self.reset!
+    @page_cache = {}
   end
 
 end
