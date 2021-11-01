@@ -53,4 +53,17 @@ describe KeyGrabber do
     expect(key).to eq('1234')
   end
 
+  it 'extracts hyperlinked keys from the response body' do
+    body = <<-HTML
+      <html>
+        <br />
+        Permanent link to this comic: <a href="https://xkcd.com/2535">https://xkcd.com/2535/</a><br />
+      </html>
+    HTML
+
+    key = KeyGrabber.extract_key(body)
+
+    expect(key).to eq('2535')
+  end
+
 end

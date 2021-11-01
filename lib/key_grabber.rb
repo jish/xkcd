@@ -30,8 +30,25 @@ class KeyGrabber
   end
 
   def self.extract_key(body)
+    key = extract_key_legacy(body)
+
+    return key if key
+
+    extract_key_hyperlink(body)
+  end
+
+  def self.extract_key_legacy(body)
     pattern = /Permanent link to this comic: https:\/\/xkcd.com\/(\d+)\//
-    body.match(pattern)[1]
+    match = body.match(pattern)
+
+    match && match[1]
+  end
+
+  def self.extract_key_hyperlink(body)
+    pattern = /Permanent link to this comic: <a href="https:\/\/xkcd.com\/(\d+)/
+    match = body.match(pattern)
+
+    match && match[1]
   end
 
   def self.reset!
